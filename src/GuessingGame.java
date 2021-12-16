@@ -7,7 +7,22 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class GuessingGame extends JFrame {
-	private JTextField textField;
+	private JTextField txtGuess;
+	private JLabel lblOutput;
+	private int theNumber;
+	public void checkGuess() {
+		String guessText = txtGuess.getText();
+		String message = "";
+		int guess = Integer.parseInt(guessText);
+		if (guess < theNumber) {
+			message = guess + " is to low. Try again";
+		} else if (guess > theNumber) {
+			message = guess + " is to high. Try again";
+		} else {
+			message = guess + " is correct. You win!";
+		}
+		lblOutput.setText(message);
+	}
 	public GuessingGame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Artem HiLo Guessing game");
@@ -17,28 +32,29 @@ public class GuessingGame extends JFrame {
 		lblArtemGuessingGame.setFont(new Font("Liberation Serif", Font.BOLD | Font.ITALIC, 16));
 		lblArtemGuessingGame.setHorizontalAlignment(SwingConstants.CENTER);
 		lblArtemGuessingGame.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblArtemGuessingGame.setBounds(52, 12, 346, 27);
+		lblArtemGuessingGame.setBounds(52, 55, 346, 27);
 		getContentPane().add(lblArtemGuessingGame);
 		
 		JLabel lblGuessANumber = new JLabel("Guess a number between 1 and 100:");
 		lblGuessANumber.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGuessANumber.setBounds(52, 88, 279, 15);
+		lblGuessANumber.setBounds(52, 137, 279, 15);
 		getContentPane().add(lblGuessANumber);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField.setBounds(349, 86, 49, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		txtGuess = new JTextField();
+		txtGuess.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtGuess.setBounds(349, 135, 49, 19);
+		getContentPane().add(txtGuess);
+		txtGuess.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Guess");
 		btnNewButton.setBounds(171, 180, 117, 25);
 		getContentPane().add(btnNewButton);
 		
-		JLabel lblEnterANumber = new JLabel("Enter a number above and press Guess");
-		lblEnterANumber.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEnterANumber.setBounds(12, 240, 436, 15);
-		getContentPane().add(lblEnterANumber);
+		lblOutput = new JLabel("Enter a number above and press Guess");
+		lblOutput.setFont(new Font("FreeSerif", Font.ITALIC, 10));
+		lblOutput.setHorizontalAlignment(SwingConstants.CENTER);
+		lblOutput.setBounds(12, 228, 436, 15);
+		getContentPane().add(lblOutput);
 	}
 
 	public static void main(String[] args) {
