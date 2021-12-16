@@ -1,2 +1,2 @@
 # GuessingGame
-Learn Java. Nothing important
+Learning Java. Nothing important
